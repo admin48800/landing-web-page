@@ -1,0 +1,562 @@
+
+
+
+ *{ box-sizing: border-box; margin: 0; padding: 0; }
+
+ body {
+/* Google tarzı odak halkası */
+/* Hem link hem butonlar için tek kural */
+
+
+
+/* Eğer sitenin rengi farklıysa (örneğin kırmızı), yukarıdaki rengi değiştir: */
+/* outline: 3px solid #FF0000; */
+
+
+
+
+   
+ font-family: 'Inter', sans-serif;
+ background: var(--bg);
+ color: var(--text);
+ line-height: 1.7;
+ overflow-x: hidden;
+ }
+ :root {
+ --bg: #ffffff;
+ --text: #111827;
+ --muted: #6B7280;
+ --accent: #2563EB;
+ --border: #E5E7EB;
+ --header-height: 80px;
+ }
+
+ a { text-decoration: none; color: inherit; transition: color 0.3s ease; }
+
+ /* --- HEADER --- */
+ header {
+ position: fixed;
+ top: 0; left: 0; right: 0;
+ height: auto;
+ min-height: var(--header-height);
+ background: rgba(255,255,255,0.96);
+ backdrop-filter: blur(10px);
+ border-bottom: 1px solid rgba(0,0,0,0.04);
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding: 10px 5%;
+ z-index: 1000;
+ flex-wrap: nowrap; 
+ gap: 10px;
+ }
+
+ .logo-area {
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ font-weight: 700;
+ font-size: 1rem;
+ color: var(--text);
+ cursor: pointer;
+ flex-shrink: 0; 
+ white-space: nowrap;
+ }
+
+ .logo-text {
+ /* Mobilde gizlenecek */
+/* Logo Metni Ayarları */
+
+ display: block;/* Masaüstünde görünür */
+transform: translateY(-10px);
+  font-weight: 400;
+ font-size: 1rem;
+ color: var(--text);
+ /* Yazının satır atlamasını engeller */
+}
+
+/* Mobilde Gizleme */
+@media (max-width: 768px) {
+ .logo-text {
+ display: none; /* Mobilde tamamen kaybolur */
+ }
+}
+
+
+   
+   
+ 
+
+ .logo-icon {
+ display: flex;
+ gap: 30px;
+ flex-wrap: nowrap; 
+ justify-content: flex-end;
+ align-items: center;
+ }
+
+ .header-buttons {
+ display: flex;
+ gap: 8px;
+ flex-wrap: nowrap; 
+ justify-content: flex-end;
+ align-items: center;
+ }
+
+ .header-action-btn {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ padding: 8px 14px;
+ border-radius: 50px;
+ border: 1px solid var(--text);
+ background: transparent;
+ color: var(--text);
+ font-weight: 600;
+ font-size: 0.8rem;
+ cursor: pointer;
+ transition: all 0.3s ease;
+ text-decoration: none;
+ white-space: nowrap;
+ flex-shrink: 1; 
+ }
+
+ .header-action-btn:hover {
+ border-color: var(--accent);
+ color: var(--accent);
+ transform: translateY(-1px);
+ }
+
+ .header-cta-btn {
+ background: var(--accent);
+ border-color: var(--accent);
+ color: #fff;
+ }
+
+ .header-cta-btn:hover {
+ background: #1d4ed8;
+ border-color: #1d4ed8;
+ transform: translateY(-1px);
+ box-shadow: 0 4px 12px rgba(37,99,235,0.3);
+ }
+
+ /* --- ANA İÇERİK --- */
+ main {
+ margin-top: calc(var(--header-height) + 60px); 
+ padding: 40px 20px 80px 20px; 
+ background: #ffffff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ min-height: calc(100vh - var(--header-height) - 240px);
+ }
+
+ .hero-section {
+ max-width: 1200px;
+ width: 100%;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+ gap: 80px;
+ align-items: center;
+ }
+
+ .hero-text {
+ padding-right: 20px;
+ }
+
+ .hero-text h1 {
+ font-size: clamp(2.2rem, 5vw, 4rem);
+ font-weight: 800;
+ letter-spacing: -0.03em;
+ margin-bottom: 24px;
+ color: var(--text);
+ line-height: 1.1;
+ }
+
+ .hero-text p.intro-text {
+ font-size: clamp(1.1rem, 2vw, 1.25rem);
+ color: var(--muted);
+ margin-bottom: 32px;
+ line-height: 1.6;
+ }
+
+ .cta-buttons {
+ display: flex;
+ gap: 16px;
+ justify-content: flex-start;
+ flex-wrap: wrap;
+ }
+
+ .btn {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ padding: 16px 32px;
+ border-radius: 10px;
+ font-weight: 600;
+ font-size: 1rem;
+ transition: all 0.3s ease;
+ cursor: pointer;
+ position: relative;
+ overflow: hidden;
+ gap: 8px;
+ }
+
+ .btn::after {
+ content: '';
+ position: absolute;
+ top: 50%;
+ left: 50%;
+ width: 0;
+ height: 0;
+ background: rgba(255,255,255,0.3);
+ border-radius: 50%;
+ transform: translate(-50%, -50%);
+ transition: width 0.4s ease, height 0.4s ease;
+ }
+
+ .btn:active::after {
+ width: 300px;
+ height: 300px;
+ }
+
+ .btn-primary {
+ background: var(--accent);
+ color: #fff;
+ box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+ }
+
+ .btn-primary:hover {
+ background: #1d4ed8;
+ transform: translateY(-2px);
+ box-shadow: 0 12px 28px rgba(37,99,235,0.35);
+ }
+
+ .btn-secondary {
+ background: transparent;
+ color: var(--text);
+ border: 1px solid var(--border);
+ }
+
+ .btn-secondary:hover {
+ border-color: var(--text);
+ background: #f9fafb;
+ }
+
+ .hero-image {
+ position: relative;
+ }
+
+ .hero-image img {
+ width: 100%;
+ height: auto;
+ border-radius: 16px;
+ box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+ object-fit: cover;
+ aspect-ratio: 4/3;
+ }
+
+ /* --- FOOTER --- */
+ footer {
+ padding: 100px 5% 40px; 
+ text-align: center;
+ color: var(--muted);
+ font-size: 0.9rem;
+ background: #ffffff;
+ border-top: 1px solid var(--border);
+ }
+
+ .footer-content {
+ max-width: 900px;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ gap: 50px;
+ margin-bottom: 50px;
+ text-align: left;
+ }
+
+ .footer-col h4 {
+ color: var(--text);
+ font-weight: 700;
+ margin-bottom: 20px;
+ font-size: 1.1rem;
+ letter-spacing: -0.01em;
+ }
+
+ .contact-item {
+ display: flex;
+ align-items: flex-start;
+ gap: 12px;
+ margin-bottom: 16px;
+ color: var(--text);
+ }
+
+ .contact-icon {
+ width: 24px;
+ height: 24px;
+ color: var(--accent);
+ flex-shrink: 0;
+ margin-top: 2px;
+ }
+
+ .contact-text a {
+ color: var(--text);
+ font-weight: 500;
+ }
+ 
+ .contact-text a:hover {
+ color: var(--accent);
+ }
+
+ .footer-links {
+ display: flex;
+ justify-content: center;
+ gap: 24px;
+ flex-wrap: wrap;
+ margin-top: 30px;
+ font-size: 0.85rem;
+ }
+
+ /* INSTAGRAM BUTONU */
+ .footer-instagram-link {
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ gap: 6px;
+ padding: 6px 12px;
+ border-radius: 50px;
+ background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+ color: #fff !important;
+ font-weight: 600;
+ font-size: 0.85rem;
+ text-decoration: none;
+ transition: all 0.3s ease;
+ box-shadow: 0 2px 8px rgba(220, 39, 67, 0.2);
+ margin-top: 10px;
+ opacity: 0.9;
+}
+
+ .footer-instagram-link:hover {
+ transform: translateY(-1px);
+ box-shadow: 0 4px 12px rgba(220, 39, 67, 0.3);
+ opacity: 1;
+ }
+
+ .footer-instagram-link svg {
+ width: 16px;
+ height: 16px;
+ fill: currentColor;
+ }
+
+ /* --- SABIT BUTONLAR --- */
+ .whatsapp-float, .direction-float, .help-float {
+ position: fixed;
+ z-index: 999;
+ cursor: pointer;
+ transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+ }
+
+ .whatsapp-float {
+ bottom: 30px;
+ right: 30px;
+ background: #25D366;
+ color: #fff;
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ display: grid;
+ place-items: center;
+ box-shadow: 0 10px 28px rgba(37,211,102,0.45);
+ animation: floatBounce 3s ease-in-out infinite;
+ }
+
+ .whatsapp-float:hover { transform: scale(1.08); }
+ .whatsapp-float:active { transform: scale(0.92); }
+ .whatsapp-float svg { width: 32px; height: 32px; fill: #fff; }
+
+ .direction-float {
+ bottom: 110px;
+ right: 30px;
+ background: #4285F4;
+ color: #fff;
+ padding: 12px 20px;
+ border-radius: 50px;
+ font-weight: 600;
+ font-size: 0.9rem;
+ box-shadow: 0 10px 28px rgba(66,133,244,0.45);
+ animation: floatBounce 3s ease-in-out infinite;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ }
+
+ .direction-float:hover { transform: scale(1.08); }
+ .direction-float:active { transform: scale(0.92); }
+ .direction-float svg { width: 20px; height: 20px; fill: #fff; }
+
+ .help-float {
+ bottom: 30px;
+ left: 30px;
+ background: #6B7280; 
+ color: #fff;
+ width: 60px;
+ height: 60px;
+ border-radius: 50%;
+ display: grid;
+ place-items: center;
+ box-shadow: 0 10px 28px rgba(107,114,128,0.45);
+ animation: floatBounce 3s ease-in-out infinite;
+ }
+
+ .help-float:hover { transform: scale(1.08); }
+ .help-float:active { transform: scale(0.92); }
+ .help-float svg { width: 32px; height: 32px; fill: #fff; }
+
+ @keyframes floatBounce {
+ 0%, 100% { transform: translateY(0); }
+ 50% { transform: translateY(-6px); }
+ }
+
+ /* MOBİL UYUMLULUK */
+ @media (max-width: 900px) {
+ header {
+ padding: 8px 15px;
+ height: auto;
+ min-height: 60px;
+ }
+ 
+ .logo-area {
+ gap: 6px;
+ }
+ 
+ .logo-text {
+ display: none;
+ }
+ 
+ .logo-icon {
+ width: 28px;
+ height: 28px;
+ font-size: 0.8rem;
+ }
+
+ .header-buttons {
+ flex-direction: row !important; 
+ gap: 6px;
+ }
+
+ .header-action-btn, .header-cta-btn {
+ padding: 6px 12px; 
+ font-size: 0.75rem; 
+ min-width: auto;
+ white-space: nowrap;
+ }
+
+ main {
+ margin-top: calc(60px + 40px); 
+ padding: 20px 15px 60px 15px;
+ }
+ 
+ .hero-section {
+ grid-template-columns: 1fr;
+ gap: 25px;
+ }
+ .hero-text { padding-right: 0; order: 2; }
+ .hero-image { order: 1; }
+ .hero-image img { aspect-ratio: 16/9; }
+ .cta-buttons { flex-direction: column; width: 100%; }
+ .btn { width: 100%; padding: 14px 20px; font-size: 0.95rem; }
+ 
+ .footer-content { grid-template-columns: 1fr; text-align: center; gap: 30px; }
+ .contact-item { justify-content: center; }
+ 
+ .whatsapp-float {
+ bottom: 20px;
+ right: 20px;
+ width: 50px;
+ height: 50px;
+ }
+ .whatsapp-float svg { width: 28px; height: 28px; }
+
+ .direction-float {
+ bottom: 85px; 
+ right: 20px;
+ padding: 8px 14px;
+ font-size: 0.8rem;
+ }
+ .direction-float svg { width: 18px; height: 18px; }
+
+ .help-float {
+ bottom: 20px;
+ left: 20px;
+ width: 50px;
+ height: 50px;
+ }
+ .help-float svg { width: 28px; height: 28px; }
+
+ footer { padding: 50px 5% 30px; }
+
+   @media (max-width: 768px) { .brand-text { display: none; } }
+
+
+
+
+/* Varsayılan ok işaretini gizle */
+details summary::-webkit-details-marker {
+ display: none;
+}
+
+/* Soru satırı stilleri */
+details summary {
+ cursor: pointer;
+ list-style: none;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 5px 0;
+}
+
+summary span:last-child {
+ font-size: 20px;
+ font-weight: bold;
+ color: #dcdcdc;
+ transition: transform 0.3s ease;
+}
+
+/* Açık durumda artı işareti dönünce çarpı olur */
+details[open] summary span:last-child {
+ transform: rotate(45deg);
+}
+
+/* Grid Hilesi ile Animasyon */
+details p {
+ grid-template-rows: 0fr;
+ transition: grid-template-rows 0.4s ease-out;
+ color: #616161;
+ line-height: 1.6;
+ font-size: 15px;
+ padding-left: 5px;
+ margin-top: 0;
+ margin-bottom: 0;
+ overflow: hidden;
+ opacity: 0; /* Başlangıçta görünmez */
+ transform: translateY(-10px); /* Hafif yukarıda */
+ transition: grid-template-rows 0.4s ease-out, opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+/* Açık durum */
+details[open] p {
+ grid-template-rows: 1fr;
+ margin-top: 10px;
+ opacity: 1; /* Görünür */
+ transform: translateY(0); /* Normal konum */
+}
+
+/* İçerik kutusu */
+details p > * {
+ min-height: 0;
+ max-height: 100%;
+}
+
+ 
+ }

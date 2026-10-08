@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>Kayıt Formu - Köyceğiz Pi Akademisi</title>
+ <meta name="description" content="Köyceğiz Pi Akademisi öğrenci kayıt başvuru formu.">
+ <meta name="keywords" content="Köyceğiz Pi Akademisi, kayıt formu">
+ <style>
+ /* Temel Sayfa Ayarları */
+ body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; font-family: sans-serif; }
+
+ /* Giriş Animasyonu (Overlay) */
+ .intro-overlay {
+ position: fixed;
+ top: 0; left: 0; width: 100%; height: 100%;
+ background-color: #f4f6f9;
+ display: flex; flex-direction: column; justify-content: center; align-items: center;
+ z-index: 9999;
+ animation: fadeOutOverlay 0.5s ease-out 1.5s forwards;
+ pointer-events: none;
+ }
+ .logo { max-height: 100px; width: auto; margin-bottom: 20px; animation: breathing 4s ease-in-out infinite; }
+ .message { font-size: 16px; color: #555; font-weight: 500; opacity: 0; animation: fadeInText 1s ease-out 0.5s forwards; }
+
+ @keyframes fadeOutOverlay { to { opacity: 0; visibility: hidden; pointer-events: none; } }
+ @keyframes breathing { 0% { transform: scale(1); opacity: 0.9; } 50% { transform: scale(1.03); opacity: 1; } 100% { transform: scale(1); opacity: 0.9; } }
+ @keyframes fadeInText { to { opacity: 1; } }
+
+ /* Iframe Ayarları */
+ iframe { width: 100%; height: 100%; border: none; display: block; }
+ </style>
+</head>
+<body>
+ <!-- Giriş Animasyonu -->
+ <div class="intro-overlay">
+ <img class="logo" src="logo.svg" alt="Kurum Logosu">
+ <div class="message">kurs kaydı için hazırlıyoruz...</div>
+ </div>
+
+ <!-- Tally Formu -->
+ <iframe src="https://tally.so/r/b50677" allowfullscreen  dynamicHeight=1 height=100%></iframe>
+</body>
+</html>
+
+
+
+
+
+
